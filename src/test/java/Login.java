@@ -19,16 +19,23 @@ public class Login {
         driver.get("https://dev-hitekschool.com/lms/ca.hts.lms.gwt.Login/Login.html");
 
         // Maximize window
-        driver.manage().window().maximize();
+       driver.manage().window().maximize();
+
 
         // Read the title of the page and put it into results
         System.out.println("Page title is: " + driver.getTitle());
 
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
         // Find the text input element 'branch' by its name
         WebElement element = driver.findElement(By.name("j_branch"));
 
         // Enter branch name
         element.sendKeys("Coquitlam");
+
 
         // Find the text input element 'username' by its name
         element = driver.findElement(By.name("j_username"));
@@ -42,21 +49,19 @@ public class Login {
         // Enter password
         element.sendKeys("manifieieva1111");
 
+
         // Find the button Login by its id
         element = driver.findElement(By.id("ext-gen38"));
 
         // Click Login button
         element.click();
 
-        // Try to sleep (wait) for 10 sec (using exception handler)
+//        // Try to sleep (wait) for 10 sec (using exception handler)
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e){
             e.printStackTrace();
         }
-
-        // Read the title of the page and output it into results - need it for debug purpose
-        System.out.println("Page title is: " + driver.getTitle());
 
         // Verify the title of the page
         Assert.assertEquals(driver.getTitle(), "Loan Management System - 'Coquitlam' branch");
