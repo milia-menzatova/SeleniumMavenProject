@@ -20,16 +20,16 @@ public class Login {
 
         // Maximize window
        driver.manage().window().maximize();
-
-
-        // Read the title of the page and put it into results
-        System.out.println("Page title is: " + driver.getTitle());
-
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e){
             e.printStackTrace();
         }
+
+        // Read the title of the page and put it into results
+        System.out.println("Page title is: " + driver.getTitle());
+
+
         // Find the text input element 'branch' by its name
         WebElement element = driver.findElement(By.name("j_branch"));
 
