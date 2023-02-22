@@ -1,9 +1,8 @@
-
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 
 public class Login {
 
@@ -17,7 +16,7 @@ public class Login {
         WebDriver driver = new FirefoxDriver();
 
         // And now use this to visit LMS login page
-        driver.get("http://dev-hitekschool.com/lms/ca.hts.lms.gwt.Login/Login.html");
+        driver.get("https://dev-hitekschool.com/lms/ca.hts.lms.gwt.Login/Login.html");
 
         // Maximize window
         driver.manage().window().maximize();
@@ -49,10 +48,18 @@ public class Login {
         // Click Login button
         element.click();
 
+        // Try to sleep (wait) for 10 sec (using exception handler)
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
 
+        // Read the title of the page and output it into results - need it for debug purpose
+        System.out.println("Page title is: " + driver.getTitle());
 
-
-
+        // Verify the title of the page
+        Assert.assertEquals(driver.getTitle(), "Loan Management System - 'Coquitlam' branch");
 
         // close the browser
         driver.close();
