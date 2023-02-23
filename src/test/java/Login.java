@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -16,15 +17,12 @@ public class Login {
         WebDriver driver = new FirefoxDriver();
 
         // And now use this to visit LMS login page
-        driver.get("https://dev-hitekschool.com/lms/ca.hts.lms.gwt.Login/Login.html");
+        driver.get("https://dev-hitekschool.com/lms/loans/2108");
 
         // Maximize window
-       driver.manage().window().maximize();
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e){
-            e.printStackTrace();
-        }
+       //driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(800, 900));
+
 
         // Read the title of the page and put it into results
         System.out.println("Page title is: " + driver.getTitle());
@@ -56,17 +54,17 @@ public class Login {
         // Click Login button
         element.click();
 
-//        // Try to sleep (wait) for 10 sec (using exception handler)
+       // Try to sleep (wait) for 10 sec (using exception handler)
         try {
-            Thread.sleep(10000);
+            Thread.sleep(20000);
         } catch (InterruptedException e){
             e.printStackTrace();
         }
-
+        // Read the title of the page and put it into results
+        System.out.println("Page title is: " + driver.getTitle());
         // Verify the title of the page
         Assert.assertEquals(driver.getTitle(), "Loan Management System - 'Coquitlam' branch");
 
-        // close the browser
         driver.close();
 
 
