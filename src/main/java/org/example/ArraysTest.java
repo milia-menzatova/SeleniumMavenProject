@@ -12,3 +12,9 @@ public class ArraysTest {
         }
     }
 }
+/*
+* You can perform a sort on string arrays, just like you can with integers.
+* But the sort is an alphabetical ascending one,
+* meaning that "aa" will come first over "ab". However, Java uses Unicode characters to compare one letter in your string to another.
+* This means that uppercase letter will come before lowercase ones. Try the following code:
+* */
