@@ -21,7 +21,15 @@ public class ExerciseArrays {
 /* Using the same array above, have your programme print out only the odd numbers.
 
  */
-        
+        int i;
+        int oddNum = 0;
+        for (i = 0; i < arrayNum.length; i++){
+            oddNum = arrayNum[i] % 2;
+            if (oddNum == 1){
+                System.out.println("odd number = " + arrayNum[i]);
+            }
+        }
+
 
 
 
