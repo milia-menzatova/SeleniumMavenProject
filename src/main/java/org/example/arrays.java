@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class arrays {
     public static void main(String[] args ){
         int[] aryNums;
@@ -11,7 +13,13 @@ public class arrays {
         aryNums[4]=43;
         aryNums[5]=18;
 
-        System.out.println(aryNums[5]);
+       // System.out.println(aryNums[5]);
+        Arrays.sort(aryNums);
+        int i;
+        for (i = 0; i < aryNums.length; i++){
+            System.out.println("num:" + aryNums[i]);
+
+        }
 
     }
 }
