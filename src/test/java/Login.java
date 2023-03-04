@@ -2,21 +2,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class Login {
-
-    public static void main(String[] args) {
+    @Test
+    public void LMSLogin(WebDriver driver) {
         String webdriverPath = "C:\\Users\\milia\\IdeaProjects\\SeleniumMavenProgect\\webdriver";
         // Set GeckoDriver
         System.setProperty("webdriver.gecko.driver", webdriverPath + "\\geckodriver-v0.32.1.exe");
         //System.setProperty("webdriver.chrome.driver", webdriverPath + "\\chromedriver-v109.exe");
 
         // Create a new instance of the firefox driver
-        WebDriver driver = new FirefoxDriver();
+        //WebDriver driver = new FirefoxDriver();
 
-        // And now use this to visit LMS login page
+
+        //  Open LMS login page
         driver.get("https://dev-hitekschool.com/lms/loans/2108");
 
         // Maximize window
@@ -65,7 +66,13 @@ public class Login {
         // Verify the title of the page
         Assert.assertEquals(driver.getTitle(), "Loan Management System - 'Coquitlam' branch");
 
-        driver.close();
+        // Try to sleep (wait) for 10 sec (using exception handler)
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        //driver.close();
 
 
     }
