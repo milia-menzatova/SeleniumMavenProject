@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class Login {
     @Test
-    public void LMSLogin(WebDriver driver) {
+    public void LMSLogin(WebDriver driver, String branch, String branchAdmin, String branchPassword) {
         String webdriverPath = "C:\\Users\\milia\\IdeaProjects\\SeleniumMavenProgect\\webdriver";
         // Set GeckoDriver
         System.setProperty("webdriver.gecko.driver", webdriverPath + "\\geckodriver-v0.32.1.exe");
@@ -64,7 +64,7 @@ public class Login {
         // Read the title of the page and put it into results
         System.out.println("Page title is: " + driver.getTitle());
         // Verify the title of the page
-        Assert.assertEquals(driver.getTitle(), "Loan Management System - 'Coquitlam' branch");
+        Assert.assertEquals(driver.getTitle(), "Loan Management System - '" + branch + "' branch");
 
         // Try to sleep (wait) for 10 sec (using exception handler)
         try {

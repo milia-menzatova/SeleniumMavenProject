@@ -1,3 +1,4 @@
+import dataprovider.UserDataProvider;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -5,8 +6,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
 public class User {
-    @Test
-    public void AddUser(){
+    @Test(dataProvider = "CreateUser", dataProviderClass = UserDataProvider.class)
+   // @Parameters(value = {"branch", "branchAdmin", "branchPassword", "user", "password"})
+    public void AddUser(String branch, String branchAdmin, String branchPassword, String user, String password, String warning){
         String webdriverPath = "C:\\Users\\milia\\IdeaProjects\\SeleniumMavenProgect\\webdriver";
         // Set GeckoDriver
         System.setProperty("webdriver.gecko.driver", webdriverPath + "\\geckodriver-v0.32.1.exe");
@@ -18,7 +20,8 @@ public class User {
 
         // Login to LMS - using LMSLogin method of class Login and passing 'driver'
         // argument to the method to re-use Firefox browser already opened
-        login.LMSLogin(driver);
+
+        login.LMSLogin(driver, branch, branchAdmin, branchPassword);
 
         // try to sleep (wait) for 5 sec (using exception handler)
         try {
@@ -50,11 +53,11 @@ public class User {
         // Find the text input element 'username' by its name
         element = driver.findElement(By.name("Username"));
         // Enter username
-        element.sendKeys("tommy");
+        element.sendKeys(user);
 
         // Find the text input element 'password' by its name
         element = driver.findElement(By.name("Password"));
-        element.sendKeys("password01");
+        element.sendKeys(password);
 
         // Find button 'Save' by its xpath
         element = driver.findElement(By.xpath("//div[5]/div/div[2]/div/div/table/tbody/tr/td[1]/table/tbody/tr/td[2]/em/button"));
@@ -65,11 +68,24 @@ public class User {
         }catch (InterruptedException e){
             e.printStackTrace();
         }
+        if (warning != ""){
+            WebElement body = driver.findElement(By.tagName("body"));
+            boolean ret = body.getText().contains(warning);
+            System.out.println(ret);
+            // find button ok by xpath and click it to close pop up
+            driver.findElement(By.xpath("//div[2]/div/div/div/div/div/table/tbody/tr/td/table/tbody/tr/td[2]")).click();
+            // Find button 'Cancel' by its xpath
+            element = driver.findElement(By.xpath("//div[5]/div/div[2]/div/div/table/tbody/tr/td[2]/table/tbody/tr/td[2]/em/button"));
+            // Click button 'Cancel'
+            element.click();
+        }else{
 
-        // verify the results by parsing html page and making sure it contain just created username
-        WebElement body = driver.findElement(By.tagName("body"));
-        boolean ret = body.getText().contains("tommy");
-        System.out.println(ret);
+            // verify the results by parsing html page and making sure it contain just created username
+            WebElement body = driver.findElement(By.tagName("body"));
+            boolean ret = body.getText().contains(user);
+            System.out.println(ret);
+        }
+
 
         // Find button 'Logout' by its xpath
         element = driver.findElement(By.xpath("//div[5]/div/div/div/div[2]/div[1]/div/div/div[1]/div/table/tbody/tr/td[5]/table/tbody/tr/td[2]/em/button"));
