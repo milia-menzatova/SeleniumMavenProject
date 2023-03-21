@@ -10,9 +10,10 @@ import org.testng.annotations.DataProvider;
  */
 public class UserDataProvider {
     @DataProvider(name = "CreateUser")
-    public static Object[][] CreateUser() {
+    public static Object[][] CreateUser()
+    {
         return new Object[][]{
-                {"Coquitlam", "admin", "manifieieva1111", "Felixxx", "password"},
+                {"Coquitlam", "admin", "manifieieva1111", "Felixxx", "password", "" },
                 {"Coquitlam", "admin", "manifieieva1111", "", "password", "Mandatory field 'Username' is empty"},
                 {"Coquitlam", "admin", "manifieieva1111", "Miaaaa", "","Mandatory field 'Password' is empty" }
         };
