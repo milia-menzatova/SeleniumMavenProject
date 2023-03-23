@@ -20,14 +20,6 @@
 
             </class>
 
-            <class name="Customers">
-                <methods>
-
-                    <include name="AddCustomer"/>
-
-                </methods>>
-
-            </class>>
 
         </classes>
 
