@@ -6,8 +6,9 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class Customers {
-    @Test//(dataProvider = "CreateCustomer", dataProviderClass = CustomerDataProvider.class)
-    @Parameters(value = {"firstName", "lastName"})
+    @Test
+    @Parameters(value = {"branch", "branchAdmin","branchPassword", "firstName", "lastName"})
+
 
     public void AddCustomer (String branch, String branchAdmin, String branchPassword, String firstName, String lastName, String warning){
         String webdriverPath = "C:\\Users\\milia\\IdeaProjects\\SeleniumMavenProgect\\webdriver";

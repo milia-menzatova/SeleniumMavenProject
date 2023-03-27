@@ -1,25 +1,29 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="LoanAppSuite" verbose="1" >
-    <parameter name = "firstName" value = "jdoe"/>
-    <parameter name = "lastName" value = "anifeevich"/>
+    <parameter name = "branch" value = "Coquitlam"/>
+    <parameter name = "branchAdmin" value = "admin"/>
+    <parameter name = "branchPassword" value = "manifieieva1111"/>
+    <parameter name="firstName" value="Salom"/>
+    <parameter name="lastName" value="Wehjhj"/>
 
-    <test name="RegressionTestCustomer1" >
+        <test name="RegressionTest2" >
 
-        <classes>
+                  <classes>
 
-            <class name="Customers">
+                            <class name="Customers">
 
-                <methods>
+                                      <methods>
 
-                    <include name="AddCustomer"/>
+                                                <include name="AddCustomer" />
 
-                </methods>
+                                      </methods>
 
-            </class>
+                            </class>
 
-        </classes>
+                  </classes>
 
-    </test>
+        </test>
 
 </suite>
+

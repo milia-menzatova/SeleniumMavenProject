@@ -40,13 +40,13 @@ public class Login {
         element = driver.findElement(By.name("j_username"));
 
         // Enter username
-        element.sendKeys("admin");
+        element.sendKeys(branchAdmin);
 
         // Find the text input element 'password' by its name
         element = driver.findElement(By.name("j_password"));
 
         // Enter password
-        element.sendKeys("manifieieva1111");
+        element.sendKeys(branchPassword);
 
 
         // Find the button Login by its id
