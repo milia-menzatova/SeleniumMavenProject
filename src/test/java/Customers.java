@@ -7,11 +7,11 @@ import org.testng.annotations.Test;
 
 public class Customers {
 
-    @Test(dataProvider = "CreateCustomer", dataProviderClass = CustomerDataProvider.class)
+    @Test (dataProvider = "CreateCustomer", dataProviderClass = CustomerDataProvider.class)
     //@Parameters(value = {"branch", "branchAdmin","branchPassword", "firstName", "lastName"})
     public void AddCustomer(String branch, String branchAdmin,
                             String branchPassword, String firstName,
-                            String lastName, String warning){
+                            String lastName, String warning, String error){
         String webdriverPath = "C:\\Users\\milia\\IdeaProjects\\SeleniumMavenProgect\\webdriver";
         // Set GeckoDriver
         System.setProperty("webdriver.gecko.driver", webdriverPath + "\\geckodriver-v0.32.1.exe");
@@ -22,7 +22,7 @@ public class Customers {
         login.LMSLogin(driver, branch, branchAdmin, branchPassword);
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
         }catch (InterruptedException e){
             e.printStackTrace();
         }
@@ -54,7 +54,7 @@ public class Customers {
         element.sendKeys(lastName);
 
         // Find button 'Save' by its xpath
-        element = driver.findElement(By.xpath("//div[1]/table[1]/tbody[1]/tr[1]/td[1]/table[1]/tbody[1]/tr[1]/td[2]/em[1]/button[1]"));
+        element = driver.findElement(By.xpath("//div[5]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/table[1]/tbody[1]/tr[1]/td[2]/em[1]/button[1]"));
         element.click();
 
         try {
@@ -63,17 +63,24 @@ public class Customers {
             e.printStackTrace();
         }
 
-        if(warning != ""){
+        if(!warning.equals("")){
             WebElement body = driver.findElement(By.tagName("body"));
             boolean cust = body.getText().contains(warning);
             System.out.println(cust);
             // find button ok by xpath and click it to close pop up
             driver.findElement(By.xpath("//div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/table[1]/tbody[1]/tr[1]/td[2]")).click();
             // Find button 'Cancel' by its xpath
-            element = driver.findElement(By.xpath("//div[2]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[2]/table[1]/tbody[1]/tr[1]/td[2]/em[1]/button[1]"));
+            element = driver.findElement(By.xpath("//div[5]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[2]/table[1]/tbody[1]/tr[1]/td[2]/em[1]/button[1]"));
             element.click();
 
-        }else {
+        }else if(!error.equals("")){
+            WebElement body = driver.findElement(By.tagName("body"));
+            boolean ret = body.getText().contains(error);
+            System.out.println(ret);
+            driver.findElement(By.xpath("//div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/table[1]/tbody[1]/tr[1]/td[2]/em[1]/button[1]")).click();
+        }
+
+        else {
             // verify the results by parsing html page and making sure it contain just created customer
             WebElement body = driver.findElement(By.tagName("body"));
             boolean cust = body.getText().contains(firstName);
@@ -84,7 +91,7 @@ public class Customers {
 
 
         // Find button 'Logout' by its xpath
-        element = driver.findElement(By.xpath("//div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[5]/table[1]/tbody[1]/tr[1]/td[2]/em[1]/button[1]"));
+        element = driver.findElement(By.xpath("//div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[5]/table[1]/tbody[1]/tr[1]/td[2]/em[1]/button[1]"));
         element.click();
 
         try {
