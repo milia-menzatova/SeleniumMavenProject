@@ -18,7 +18,7 @@ public class CustomerDataProvider {
                 {"Coquitlam", "admin", "manifieieva1111", "Lucy", "Willow", "", "Customer 'Lucy Willow' already exists."},
                 {"Coquitlam", "admin", "manifieieva1111", "", "Lucy", "Mandatory field 'First Name' is empty", ""},
                 {"Coquitlam", "admin", "manifieieva1111", "Fox", "", "Mandatory field 'Last Name' is empty", ""},
-               
+
 
         };
     }
