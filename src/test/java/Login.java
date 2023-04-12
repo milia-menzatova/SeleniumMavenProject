@@ -1,9 +1,8 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pageobject.LoginPage;
 
 public class Login {
     @Test
@@ -16,7 +15,8 @@ public class Login {
         // Create a new instance of the firefox driver
         //WebDriver driver = new FirefoxDriver();
 
-
+        ////Create Objects required for this test
+        LoginPage loginPage = new LoginPage(driver);
         //  Open LMS login page
         driver.get("https://dev-hitekschool.com/lms/loans/2108");
 
@@ -28,32 +28,32 @@ public class Login {
         // Read the title of the page and put it into results
         System.out.println("Page title is: " + driver.getTitle());
 
-
-        // Find the text input element 'branch' by its name
-        WebElement element = driver.findElement(By.name("j_branch"));
-
         // Enter branch name
-        element.sendKeys("Coquitlam");
+        loginPage.setBranchName(driver, branch);
 
-
-        // Find the text input element 'username' by its name
-        element = driver.findElement(By.name("j_username"));
-
-        // Enter username
-        element.sendKeys(branchAdmin);
-
-        // Find the text input element 'password' by its name
-        element = driver.findElement(By.name("j_password"));
-
-        // Enter password
-        element.sendKeys(branchPassword);
-
-
-        // Find the button Login by its id
-        element = driver.findElement(By.id("ext-gen38"));
+        // Enter branch admin password
+        loginPage.setBranchAdminPassword(driver,branchPassword);
 
         // Click Login button
-        element.click();
+        loginPage.clickLoginButton(driver);
+
+
+//        // Find the text input element 'branch' by its name
+//        WebElement element = driver.findElement(By.name("j_branch"));
+//        // Enter branch name
+//        element.sendKeys("Coquitlam");
+//        // Find the text input element 'username' by its name
+//        element = driver.findElement(By.name("j_username"));
+//        // Enter username
+//        element.sendKeys(branchAdmin);
+//        // Find the text input element 'password' by its name
+//        element = driver.findElement(By.name("j_password"));
+//        // Enter password
+//        element.sendKeys(branchPassword);
+//        // Find the button Login by its id
+//        element = driver.findElement(By.id("ext-gen38"));
+//        // Click Login button
+//        element.click();
 
        // Try to sleep (wait) for 10 sec (using exception handler)
         try {
