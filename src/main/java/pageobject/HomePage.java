@@ -27,8 +27,10 @@ public class HomePage {
         return  this;
     }
 
-    //
-
-
+    public HomePage clickCustomersButton(WebDriver driver){
+        //click Customers button
+        buttonCustomers.click();
+        return this;
+    }
 
 }
