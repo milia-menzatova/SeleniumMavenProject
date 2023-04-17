@@ -55,6 +55,11 @@ public class UsersPage {
         linkDeleteUser.click();
         return this;
     }
+    public UsersPage clickLogoutButton(WebDriver driver){
+        //click Logout button
+        buttonLogout.click();
+        return this;
+    }
 
 
 }

@@ -16,6 +16,7 @@ public class User {
         WebDriver driver = new FirefoxDriver();
 
         // Create an instance of class Login to use its LMSLogin method in our Add User scenario
+        //Create Objects required for this test
         Login login = new Login();
 
         // Login to LMS - using LMSLogin method of class Login and passing 'driver'
