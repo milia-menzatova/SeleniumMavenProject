@@ -31,6 +31,9 @@ public class Login {
         // Enter branch name
         loginPage.setBranchName(driver, branch);
 
+        //Enter username
+        loginPage.setBranchAdminUsername(driver, branchAdmin);
+
         // Enter branch admin password
         loginPage.setBranchAdminPassword(driver,branchPassword);
 
